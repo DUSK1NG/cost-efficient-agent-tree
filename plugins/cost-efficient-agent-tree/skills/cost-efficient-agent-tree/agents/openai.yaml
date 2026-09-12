@@ -1,0 +1,7 @@
+interface:
+  display_name: "Cost Efficient Agent Tree"
+  short_description: "Route complex coding work through minimal useful subagents"
+  default_prompt: "Use $cost-efficient-agent-tree for this complex or parallelizable coding task."
+
+policy:
+  allow_implicit_invocation: false
