@@ -1,16 +1,25 @@
 {
   "name": "cost-efficient-agent-tree",
-  "version": "0.1.0+codex.20260912060639",
+  "version": "0.1.0+codex.20260912061446",
   "description": "A portable Codex skill for routing complex work through the fewest useful subagents.",
   "author": {
-    "name": "Local developer"
+    "name": "DUSK1NG",
+    "url": "https://github.com/DUSK1NG"
   },
+  "homepage": "https://github.com/DUSK1NG/cost-efficient-agent-tree",
+  "repository": "https://github.com/DUSK1NG/cost-efficient-agent-tree",
+  "keywords": [
+    "codex",
+    "skill",
+    "subagents",
+    "agent-routing"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Cost Efficient Agent Tree",
     "shortDescription": "Route complex work through minimal useful subagents.",
     "longDescription": "Provides explicit-only cost-efficient agent routing guidance for complex, multi-file, research-dependent, and parallelizable Codex tasks.",
-    "developerName": "Local developer",
+    "developerName": "DUSK1NG",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": "Use $cost-efficient-agent-tree for this task.",
