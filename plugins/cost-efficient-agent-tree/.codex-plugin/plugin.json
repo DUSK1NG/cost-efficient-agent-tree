@@ -1,6 +1,6 @@
 {
   "name": "cost-efficient-agent-tree",
-  "version": "0.1.0",
+  "version": "0.1.0+codex.20260912060639",
   "description": "A portable Codex skill for routing complex work through the fewest useful subagents.",
   "author": {
     "name": "Local developer"
@@ -13,6 +13,9 @@
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [],
-    "defaultPrompt": "Use $cost-efficient-agent-tree for this task."
+    "defaultPrompt": "Use $cost-efficient-agent-tree for this task.",
+    "screenshots": [
+      "./assets/cost-efficient-agent-tree.png"
+    ]
   }
 }

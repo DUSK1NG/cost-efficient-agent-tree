@@ -2,6 +2,8 @@
 
 这是可复制到其他电脑的 Codex 本地 Marketplace 包，包含 `cost-efficient-agent-tree` Skill。
 
+![Cost Efficient Agent Tree](plugins/cost-efficient-agent-tree/assets/cost-efficient-agent-tree.png)
+
 ## 行为
 
 - 默认关闭隐式调用。
