@@ -1,82 +1,36 @@
 # Cost Efficient Agent Tree
+Codex 插件，为复杂任务提供按需分配子代理的工作规则，用于减少重复调查和无必要的模型调用。
 
-将成本优先的 Agent 路由思路适配为可安装的 Codex 插件，包含显式调用的 `cost-efficient-agent-tree` Skill。
+## 快速开始
 
-![Cost Efficient Agent Tree](plugins/cost-efficient-agent-tree/assets/cost-efficient-agent-tree.png)
-
-## 来源与声明
-
-原始构想与图示作者：[Voxyz（@Voxyz_ai）](https://x.com/Voxyz_ai)。
-
-本仓库由 DUSK1NG 面向 Codex 进行非官方适配和打包，与原作者不存在隶属或背书关系。为匹配插件实际行为，重绘图示时移除了固定模型和推理档位，并补充了显式调用、简单任务直接执行、按需委派及高风险审查规则。
-
-## 特性
-
-- 默认关闭隐式调用。
-- 只有在提示词中明确写 `$cost-efficient-agent-tree` 时才调用该 Skill。
-- Skill 负责在复杂、多文件、需要研究或可并行的任务中选择最少且有实际价值的子 Agent。
-
-## 一键安装
-
-Windows PowerShell：
-
-```powershell
-irm https://raw.githubusercontent.com/DUSK1NG/cost-efficient-agent-tree/main/install.ps1 | iex
-```
-
-macOS / Linux：
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/DUSK1NG/cost-efficient-agent-tree/main/install.sh | sh
-```
-
-脚本会检查 `codex` 命令，添加或更新本仓库 Marketplace，然后安装插件。建议执行前先查看 [install.ps1](install.ps1) 或 [install.sh](install.sh)。
-
-## 手动安装
-
-直接从 GitHub 添加：
+准备可用的 Codex CLI，在终端执行：
 
 ```powershell
 codex plugin marketplace add DUSK1NG/cost-efficient-agent-tree
 codex plugin add cost-efficient-agent-tree@cost-efficient-agent-tree-local
 ```
 
-也可以下载并解压安装包，再添加本地目录：
-
-```powershell
-codex plugin marketplace add "C:\path\to\cost-efficient-agent-tree"
-codex plugin add cost-efficient-agent-tree@cost-efficient-agent-tree-local
-```
-
-## 下载后交给自己的 Codex
-
-1. 从 [Releases](https://github.com/DUSK1NG/cost-efficient-agent-tree/releases/latest) 下载 `cost-efficient-agent-tree-v0.1.0.zip`。
-2. 将 ZIP 作为附件发送给 Codex。
-3. 发送下面的提示词：
+安装输出包含：
 
 ```text
-请安装附件中的 cost-efficient-agent-tree 插件。先检查包内 README 和清单，添加其中的 Marketplace 并安装插件；不要修改其他插件或无关配置。完成后验证 policy.allow_implicit_invocation 为 false，并告诉我是否需要新建对话。
+Added marketplace `cost-efficient-agent-tree-local` from https://github.com/DUSK1NG/cost-efficient-agent-tree.git.
+Added plugin `cost-efficient-agent-tree` from marketplace `cost-efficient-agent-tree-local`.
 ```
 
-安装后重启 Codex，并在新对话中明确调用：
+## 使用
+
+重启 Codex 并新建对话，在提示中明确写：
 
 ```text
 使用 $cost-efficient-agent-tree 完成这个任务。
 ```
 
-## 目录
+简单明确的任务直接执行；有独立工作时才分配子代理。具体规则见 [Skill](plugins/cost-efficient-agent-tree/skills/cost-efficient-agent-tree/SKILL.md)。
 
-```text
-cost-efficient-agent-tree/
-├── .agents/plugins/marketplace.json
-├── marketplace.json
-├── install.ps1
-├── install.sh
-└── plugins/
-    └── cost-efficient-agent-tree/
-        ├── .codex-plugin/plugin.json
-        ├── assets/cost-efficient-agent-tree.png
-        └── skills/cost-efficient-agent-tree/
-            ├── SKILL.md
-            └── agents/openai.yaml
-```
+## 配置
+
+[策略文件](plugins/cost-efficient-agent-tree/skills/cost-efficient-agent-tree/agents/openai.yaml)设置 `allow_implicit_invocation: false`，需要显式调用。
+
+## 开发
+
+脚本安装、本地目录安装与包内清单见[安装说明](docs/installation.md)。原始构想与图示作者为 [Voxyz（@Voxyz_ai）](https://x.com/Voxyz_ai)，本仓库由 DUSK1NG 非官方适配和打包，与原作者无隶属或背书关系。
